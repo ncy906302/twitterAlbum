@@ -1,0 +1,45 @@
+{% load static %}
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox-plus-jquery.min.js"></script>
+<link rel="stylesheet" href="{% static 'albumApp/lightbox.min.css' %}">
+
+<link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">  
+<script src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+
+<style>
+input[type="text"] {
+    width: 500;
+    font-size: 2vw;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#wait").hide();
+    $("#urlpost").click(function(){
+        $("#wait").show(1000);
+        $(this).hide();
+	});
+});
+</script>
+
+
+
+
+<div align="center">
+
+<div style="width:100%;font-size: 2vmax;">請輸入Twitter網址</div>
+
+<form method="POST" enctype="multipart/form-data" action="/app/upurl/">
+{% csrf_token %}
+<p><input type="text" name="url" value="https://twitter.com/maaya_taso"></p>
+<button id ="urlpost" type="submit">upload</button>
+</form>
+
+<p id="wait">加載中，約莫5秒鐘...</p>
+
+</div>
