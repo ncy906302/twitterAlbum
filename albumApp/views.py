@@ -22,7 +22,7 @@ from django.core.exceptions import MiddlewareNotUsed
 from django.conf import settings
 # csrf pass
 from django.views.decorators.csrf import csrf_exempt
-
+import chromedriver_binary
 from pyvirtualdisplay import Display
 
 def scrollTo():
@@ -91,6 +91,7 @@ def jq(request):
     global content
     content = {'img_list':img_list , 'date_list':date_list , 'month_list':month_list }
     idx = len(date_list)
+    print(scrollTo())
     driver.execute_script(scrollTo())
     return HttpResponse(json.dumps(content))
 
