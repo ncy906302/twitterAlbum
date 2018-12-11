@@ -34,8 +34,6 @@ def index(request):
         display = Display(visible=0, size=(1280, 720))  
         display.start()
         driver = selenium.webdriver.Chrome()
-        driver.set_window_position(0,0) #瀏覽器位置
-        driver.set_window_size(1280,720) #瀏覽器大小
     return render(request, 'albumApp/index.html')
 
 @csrf_exempt
