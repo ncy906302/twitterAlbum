@@ -23,7 +23,7 @@ from django.conf import settings
 # csrf pass
 from django.views.decorators.csrf import csrf_exempt
 
-from pyvirtualdisplay import Display
+from selenium.webdriver.chrome.options import Options
 
 def index(request):
     global driver
@@ -31,9 +31,9 @@ def index(request):
         if driver :
             print('pass')
     except:
-        display = Display(visible=0, size=(1280, 720))  
-        display.start()
-        driver = selenium.webdriver.Chrome()
+        options = Options()
+        options.add_argument('--headless')
+        driver = selenium.webdriver.Chrome(options=options)
     return render(request, 'albumApp/index.html')
 
 @csrf_exempt
@@ -47,6 +47,9 @@ def upUrl(request):
     global driver,handles
     js='window.open("'+ url +'");'
     driver.execute_script(js)
+    page_width = driver.execute_script('return document.body.scrollWidth')
+    page_height = driver.execute_script('return document.body.scrollHeight')
+    driver.set_window_size(page_width, page_height)
     handle = driver.window_handles[-1]
     content = {'handle':handle }
     global idx
