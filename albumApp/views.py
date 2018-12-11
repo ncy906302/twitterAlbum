@@ -59,7 +59,7 @@ def upUrl(request):
 def jq(request):
     print(request.POST['name'])
     global idx,driver
-    driver.switch_to_window(request.POST['name'])
+#     driver.switch_to_window(request.POST['name'])
     soup = BeautifulSoup(driver.page_source,'html.parser')
     img_list=[]
     date_list=[]
@@ -86,7 +86,7 @@ def jq(request):
     global content
     content = {'img_list':img_list , 'date_list':date_list , 'month_list':month_list }
     idx = len(date_list)
-    driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+#     driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
     return HttpResponse(json.dumps(content))
 
 
