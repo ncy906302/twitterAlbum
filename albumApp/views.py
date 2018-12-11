@@ -25,6 +25,11 @@ from django.views.decorators.csrf import csrf_exempt
 
 from pyvirtualdisplay import Display
 
+def scrollTo():
+    return 'window.scrollTo(0, document.body.scrollHeight)'
+
+
+
 def index(request):
     global driver
     try:
@@ -86,7 +91,7 @@ def jq(request):
     global content
     content = {'img_list':img_list , 'date_list':date_list , 'month_list':month_list }
     idx = len(date_list)
-#     driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+    driver.execute_script(scrollTo())
     return HttpResponse(json.dumps(content))
 
 
