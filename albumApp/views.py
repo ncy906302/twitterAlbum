@@ -23,7 +23,7 @@ from django.conf import settings
 # csrf pass
 from django.views.decorators.csrf import csrf_exempt
 
-
+from pyvirtualdisplay import Display
 
 def index(request):
     global driver
@@ -31,6 +31,8 @@ def index(request):
         if driver :
             print('pass')
     except:
+        display = Display(visible=0, size=(1280, 720))  
+        display.start()
         driver = selenium.webdriver.Chrome()
         driver.set_window_position(0,0) #瀏覽器位置
         driver.set_window_size(1280,720) #瀏覽器大小
