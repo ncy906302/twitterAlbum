@@ -26,7 +26,7 @@ import chromedriver_binary
 from pyvirtualdisplay import Display
 
 def scrollTo(cmd: str):
-    return {cmd}.format(cmd=cmd)
+    return '{cmd}'.format(cmd=cmd)
 
 
 
