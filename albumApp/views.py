@@ -25,7 +25,7 @@ from django.views.decorators.csrf import csrf_exempt
 import chromedriver_binary
 from pyvirtualdisplay import Display
 
-def scrollTo(cmd):
+def scrollTo(cmd: str):
     return {cmd}.format(cmd=cmd)
 
 
